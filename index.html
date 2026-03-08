@@ -1,542 +1,656 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tejas Luhar | Portfolio</title>
+  <title>Tejas Luhar | Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-  /* GLASSMORPHISM EFFECT */
+  <style>
+    /* GLASSMORPHISM EFFECT */
 
-.glass{
+    .glass {
 
-background:rgba(255,255,255,0.08);
-backdrop-filter: blur(16px);
--webkit-backdrop-filter: blur(16px);
+      background: linear-gradient(135deg,
+          rgba(56, 189, 248, 0.10) 0%,
+          rgba(139, 92, 246, 0.10) 50%,
+          rgba(14, 165, 233, 0.08) 100%);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
 
-border:1px solid rgba(255,255,255,0.18);
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
 
-border-radius:18px;
+      border-radius: 22px;
 
-box-shadow:
-0 8px 32px rgba(0,0,0,0.35);
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(56, 189, 248, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
 
-padding:40px;
+      padding: 40px;
 
-margin:auto;
+      margin: auto;
 
-max-width:1100px;
+      max-width: 1100px;
 
-}
+    }
 
-/* LIGHT MODE GLASS */
+    /* LIGHT MODE GLASS */
 
-body.light .glass{
+    body.light .glass {
 
-background:rgba(255,255,255,0.6);
-border:1px solid rgba(0,0,0,0.08);
+      background: linear-gradient(135deg,
+          rgba(255, 255, 255, 0.72) 0%,
+          rgba(219, 234, 254, 0.65) 50%,
+          rgba(237, 233, 254, 0.70) 100%);
+      border: 1px solid rgba(139, 92, 246, 0.22);
+      border-top: 1px solid rgba(255, 255, 255, 0.9);
 
-}
+      box-shadow:
+        0 8px 32px rgba(139, 92, 246, 0.12),
+        0 2px 8px rgba(56, 189, 248, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
-}
+    }
 
-/* DARK THEME DEFAULT */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
 
-body{
+    /* DARK THEME DEFAULT */
 
-background:linear-gradient(
-135deg,
-#020617,
-#0f172a,
-#1e293b
-);
+    body {
 
-color:white;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 10%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+        linear-gradient(135deg, #020617 0%, #0f172a 50%, #1a0a2e 100%);
 
-min-height:100vh;
+      color: white;
 
-}
+      min-height: 100vh;
 
-body.light{
+    }
 
-background:linear-gradient(
-135deg,
-#f1f5f9,
-#e2e8f0
-);
+    body.light {
 
-color:#111;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+        linear-gradient(135deg, #f0f4ff 0%, #e8eeff 50%, #f3f0ff 100%);
 
-}
-/* LIGHT MODE */
+      color: #111;
 
-body.light{
-background:linear-gradient(135deg,#f1f5f9,#e2e8f0);
-color:#111;
-}
+    }
 
-/* NAVBAR */
 
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 8%;
-position:sticky;
-top:0;
-z-index:1000;
 
-/* glass effect */
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(12px);
-border-bottom:1px solid rgba(255,255,255,0.1);
-}
-
-body.light nav{
-background:rgba(255,255,255,0.5);
-}
-
-/* LOGO */
-
-.logo{
-font-weight:600;
-font-size:20px;
-color:#38bdf8;
-}
-
-/* NAV LINKS */
-
-nav ul{
-display:flex;
-list-style:none;
-}
-
-nav ul li{
-margin-left:25px;
-}
-
-nav ul li a{
-text-decoration:none;
-color:inherit;
-font-size:15px;
-}
-
-/* HERO */
-
-.hero{
-display:flex;
-align-items:center;
-justify-content:center;
-flex-wrap:wrap;
-gap:50px;
-padding:120px 10%;
-}
-
-/* PROFILE IMAGE */
-
-.profile{
-width:230px;
-height:230px;
-border-radius:50%;
-object-fit:cover;
-
-border:4px solid rgba(56,189,248,0.8);
-box-shadow:0 0 35px rgba(56,189,248,0.5);
-}
-
-/* BUTTON */
-
-.btn{
-display:inline-block;
-margin-top:20px;
-padding:12px 28px;
-background:#38bdf8;
-color:black;
-text-decoration:none;
-border-radius:10px;
-font-weight:600;
-}
-
-/* SECTIONS */
-
-section{
-padding:80px 10%;
-text-align:center;
-}
-
-/* GLASS CARD */
-
-.glass{
-
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(14px);
-border:1px solid rgba(255,255,255,0.15);
-border-radius:16px;
-padding:30px;
-}
-
-body.light .glass{
-background:rgba(255,255,255,0.6);
-}
-
-/* SKILLS */
-
-.skills{
-max-width:700px;
-margin:auto;
-}
-
-.skill{
-margin:18px 0;
-text-align:left;
-}
-
-.bar{
-background:rgba(255,255,255,0.15);
-height:8px;
-border-radius:10px;
-}
-
-.bar span{
-display:block;
-height:8px;
-background:#38bdf8;
-border-radius:10px;
-}
-
-/* PROJECTS */
-
-.project-grid{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:25px;
-}
-
-.project{
-width:280px;
-transition:0.3s;
-}
-
-.project:hover{
-transform:translateY(-10px) scale(1.03);
-}
-
-/* HOBBIES */
-
-.hobby-list{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:15px;
-}
-
-.hobby-list div{
-padding:10px 18px;
-border-radius:20px;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(10px);
-}
-
-/* CONTACT */
-
-.contact-links i{
-font-size:28px;
-margin:15px;
-color:#38bdf8;
-transition:0.3s;
-}
-
-.contact-links i:hover{
-transform:scale(1.2);
-}
-
-/* FOOTER */
-
-footer{
-text-align:center;
-padding:20px;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.hero{
-flex-direction:column;
-text-align:center;
-}
-
-.profile{
-width:180px;
-height:180px;
-}
-
-nav ul{
-display:none;
-}
-
-}
-}
-
-</style>
+    /* scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(139, 92, 246, 0.5);
+      border-radius: 10px;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.07), rgba(139, 92, 246, 0.07));
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(139, 92, 246, 0.25);
+    }
+
+    body.light nav {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.75), rgba(237, 233, 254, 0.75));
+      border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+    }
+
+    /* LOGO */
+
+    .logo {
+      font-weight: 600;
+      font-size: 20px;
+      color: #38bdf8;
+    }
+
+    /* TOGGLE BTN */
+
+    .toggle {
+      cursor: pointer;
+      font-size: 22px;
+      color: #38bdf8;
+      transition: 0.3s;
+    }
+
+    .toggle:hover {
+      transform: scale(1.1);
+    }
+
+    /* NAV LINKS */
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 15px;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 50px;
+      padding: 120px 10%;
+    }
+
+    /* PROFILE IMAGE */
+
+    .profile {
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      object-fit: cover;
+
+      border: 3px solid transparent;
+      background-clip: padding-box;
+      outline: 3px solid rgba(139, 92, 246, 0.6);
+      outline-offset: 3px;
+
+      box-shadow:
+        0 0 30px rgba(56, 189, 248, 0.45),
+        0 0 60px rgba(139, 92, 246, 0.25),
+        0 8px 32px rgba(0, 0, 0, 0.4);
+      transition: box-shadow 0.3s;
+    }
+
+    .profile:hover {
+      box-shadow:
+        0 0 40px rgba(56, 189, 248, 0.65),
+        0 0 80px rgba(139, 92, 246, 0.35),
+        0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    /* BUTTON */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      padding: 13px 30px;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(56, 189, 248, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.15);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 80px 10%;
+      text-align: center;
+    }
+
+    /* GLASS CARD - overrides for inner cards (no max-width) */
+
+    .project.glass {
+      padding: 30px;
+      max-width: none;
+      margin: 0;
+    }
+
+    /* SKILLS */
+
+    .skills {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .skill {
+      margin: 18px 0;
+      text-align: left;
+    }
+
+    .bar {
+      background: rgba(255, 255, 255, 0.15);
+      height: 8px;
+      border-radius: 10px;
+    }
+
+    .bar span {
+      display: block;
+      height: 8px;
+      background: #38bdf8;
+      border-radius: 10px;
+    }
+
+    /* PROJECTS */
+
+    .project-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .project {
+      width: 280px;
+      transition: 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-10px) scale(1.03);
+    }
+
+    /* HOBBIES */
+
+    .hobby-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .hobby-list div {
+      padding: 10px 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    /* CONTACT */
+
+    .contact-links i {
+      font-size: 28px;
+      margin: 15px;
+      color: #38bdf8;
+      transition: 0.3s;
+    }
+
+    .contact-links i:hover {
+      transform: scale(1.2);
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px) {
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile {
+        width: 180px;
+        height: 180px;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+    }
+    }
+  </style>
 
 </head>
 
 <body>
 
-<nav>
+  <nav>
 
-<div class="logo">Tejas Luhar</div>
+    <div class="logo">Tejas Luhar</div>
 
-<ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="toggle">
+      <i class="fas fa-moon"></i>
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section id="home" class="hero">
+
+    <div class="glass">
+
+      <h1>Hello, I'm <span>Tejas Luhar</span></h1>
+
+      <h3 id="typing"></h3>
+
+      <p>
+        Information Technology student specializing in WordPress development,
+        SEO implementation and scalable digital platforms.
+      </p>
+
+      <a href="Tejas_Luhar_Resume.pdf" class="btn" download="Tejas_Luhar_Resume.pdf"><i class="fas fa-download"></i>
+        Download Resume</a>
+
+    </div>
+
+    <img src="profile.jpg" class="profile">
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="glass">
+
+      <h2>About Me</h2>
+
+      <p>
+        IT engineering student with hands-on experience in WordPress development,
+        SEO optimization and analytics integration.
+      </p>
+
+    </div>
+
+  </section>
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <div class="glass">
 
-<div class="toggle">
-<i class="fas fa-moon"></i>
-</div>
+      <h2>Technical Skills</h2>
+
+      <div class="skills">
 
-</nav>
+        <div class="skill">
+          <p>HTML</p>
+          <div class="bar"><span style="width:90%"></span></div>
+        </div>
+        <div class="skill">
+          <p>CSS</p>
+          <div class="bar"><span style="width:85%"></span></div>
+        </div>
+        <div class="skill">
+          <p>JavaScript</p>
+          <div class="bar"><span style="width:75%"></span></div>
+        </div>
+        <div class="skill">
+          <p>WordPress</p>
+          <div class="bar"><span style="width:92%"></span></div>
+        </div>
+        <div class="skill">
+          <p>WooCommerce</p>
+          <div class="bar"><span style="width:88%"></span></div>
+        </div>
+        <div class="skill">
+          <p>SEO</p>
+          <div class="bar"><span style="width:85%"></span></div>
+        </div>
+        <div class="skill">
+          <p>Python</p>
+          <div class="bar"><span style="width:60%"></span></div>
+        </div>
+        <div class="skill">
+          <p>Java</p>
+          <div class="bar"><span style="width:55%"></span></div>
+        </div>
+        <div class="skill">
+          <p>C Programming</p>
+          <div class="bar"><span style="width:65%"></span></div>
+        </div>
+        <div class="skill">
+          <p>Figma</p>
+          <div class="bar"><span style="width:70%"></span></div>
+        </div>
+        <div class="skill">
+          <p>Google Analytics</p>
+          <div class="bar"><span style="width:75%"></span></div>
+        </div>
+        <div class="skill">
+          <p>Prompt Engineering</p>
+          <div class="bar"><span style="width:80%"></span></div>
+        </div>
+        <div class="skill">
+          <p>Canva</p>
+          <div class="bar"><span style="width:85%"></span></div>
+        </div>
+        <div class="skill">
+          <p>DaVinci Resolve</p>
+          <div class="bar"><span style="width:75%"></span></div>
+        </div>
 
-<!-- HERO -->
+      </div>
 
-<section id="home" class="hero">
+    </div>
 
-<div class="glass">
+  </section>
+  <!-- PROJECTS -->
 
-<h1>Hello, I'm <span>Tejas Luhar</span></h1>
+  <section id="projects">
 
-<h3 id="typing"></h3>
+    <div class="glass">
 
-<p>
-Information Technology student specializing in WordPress development,
-SEO implementation and scalable digital platforms.
-</p>
+      <h2>Projects</h2>
 
-<a href="resume.pdf" class="btn">Download Resume</a>
+      <div class="project-grid">
 
-</div>
+        <div class="project glass">
+          <h3>Travelora Holidays</h3>
 
-<img src="profile.jpg" class="profile">
+          <p>
+            Developed responsive travel website with booking workflow,
+            technical SEO, SSL security and analytics integration.
+          </p>
 
-</section>
+        </div>
 
-<!-- ABOUT -->
+        <div class="project glass">
+          <h3>Sushobhan E-Commerce</h3>
+          <p>
+            Designed WooCommerce e-commerce platform with SEO optimized
+            product catalog and secure checkout.
+          </p>
 
-<section id="about">
+        </div>
 
-<div class="glass">
+      </div>
 
-<h2>About Me</h2>
+    </div>
 
-<p>
-IT engineering student with hands-on experience in WordPress development,
-SEO optimization and analytics integration.
-</p>
+  </section>
+  <!-- HOBBIES -->
 
-</div>
+  <section id="hobbies">
 
-</section>
-<!-- SKILLS -->
+    <div class="glass">
 
-<section id="skills">
+      <h2>Hobbies</h2>
 
-<div class="glass">
+      <div class="hobby-list">
 
-<h2>Technical Skills</h2>
+        <div>Badminton</div>
+        <div>Motorsports</div>
+        <div>Photography</div>
+        <div>Video Editing</div>
+        <div>Creative Media</div>
 
-<div class="skills">
+      </div>
 
-<div class="skill"><p>HTML</p><div class="bar"><span style="width:90%"></span></div></div>
-<div class="skill"><p>CSS</p><div class="bar"><span style="width:85%"></span></div></div>
-<div class="skill"><p>JavaScript</p><div class="bar"><span style="width:75%"></span></div></div>
-<div class="skill"><p>WordPress</p><div class="bar"><span style="width:92%"></span></div></div>
-<div class="skill"><p>WooCommerce</p><div class="bar"><span style="width:88%"></span></div></div>
-<div class="skill"><p>SEO</p><div class="bar"><span style="width:85%"></span></div></div>
-<div class="skill"><p>Python</p><div class="bar"><span style="width:60%"></span></div></div>
-<div class="skill"><p>Java</p><div class="bar"><span style="width:55%"></span></div></div>
-<div class="skill"><p>C Programming</p><div class="bar"><span style="width:65%"></span></div></div>
-<div class="skill"><p>Figma</p><div class="bar"><span style="width:70%"></span></div></div>
-<div class="skill"><p>Google Analytics</p><div class="bar"><span style="width:75%"></span></div></div>
-<div class="skill"><p>Prompt Engineering</p><div class="bar"><span style="width:80%"></span></div></div>
-<div class="skill"><p>Canva</p><div class="bar"><span style="width:85%"></span></div></div>
-<div class="skill"><p>DaVinci Resolve</p><div class="bar"><span style="width:75%"></span></div></div>
+    </div>
 
-</div>
+  </section>
 
-</div>
+  <!-- CONTACT -->
 
-</section>
-<!-- PROJECTS -->
+  <section id="contact">
 
-<section id="projects">
+    <div class="glass">
 
-<div class="glass">
+      <h2>Contact</h2>
 
-<h2>Projects</h2>
+      <div class="contact-links">
 
-<div class="project-grid">
+        <a href="mailto:luhartejas48@gmail.com">
+          <i class="fas fa-envelope"></i>
+        </a>
 
-<div class="project glass">
-<h3>Travelora Holidays</h3>
+        <a href="https://github.com/Ultron2712">
+          <i class="fab fa-github"></i>
+        </a>
 
-<p>
-Developed responsive travel website with booking workflow,
-technical SEO, SSL security and analytics integration.
-</p>
+        <a href="https://linkedin.com/in/tejas-luhar">
+          <i class="fab fa-linkedin"></i>
+        </a>
 
-</div>
+      </div>
 
-<div class="project glass">
-<h3>Sushobhan E-Commerce</h3>
-<p>
-Designed WooCommerce e-commerce platform with SEO optimized
-product catalog and secure checkout.
-</p>
+    </div>
 
-</div>
+  </section>
 
-</div>
+  <footer>
 
-</div>
+    <p>© 2026 Tejas Luhar</p>
 
-</section>
-<!-- HOBBIES -->
+  </footer>
 
-<section id="hobbies">
+  <script>
 
-<div class="glass">
+    /* typing animation */
 
-<h2>Hobbies</h2>
+    const roles = [
+      "WordPress Developer",
+      "Web Developer",
+      "SEO Specialist",
+      "Digital Tech Enthusiast"
+    ];
 
-<div class="hobby-list">
+    let i = 0;
+    let j = 0;
+    let current = "";
+    let isDeleting = false;
 
-<div>Badminton</div>
-<div>Motorsports</div>
-<div>Photography</div>
-<div>Video Editing</div>
-<div>Creative Media</div>
+    function type() {
 
-</div>
+      current = roles[i];
 
-</div>
+      if (!isDeleting) { j++; }
+      else { j--; }
 
-</section>
+      document.getElementById("typing").textContent = current.substring(0, j);
 
-<!-- CONTACT -->
+      if (!isDeleting && j === current.length) {
+        isDeleting = true;
+        setTimeout(type, 1200);
+        return;
+      }
 
-<section id="contact">
+      if (isDeleting && j === 0) {
+        isDeleting = false;
+        i++;
+        if (i === roles.length) { i = 0; }
+      }
 
-<div class="glass">
+      setTimeout(type, 80);
+    }
 
-<h2>Contact</h2>
+    type();
 
-<div class="contact-links">
+    /* scroll reveal */
 
-<a href="mailto:luhartejas48@gmail.com">
-<i class="fas fa-envelope"></i>
-</a>
+    window.addEventListener("scroll", function () {
 
-<a href="https://github.com/Ultron2712">
-<i class="fab fa-github"></i>
-</a>
+      const reveals = document.querySelectorAll(".reveal");
 
-<a href="https://linkedin.com/in/tejas-luhar">
-<i class="fab fa-linkedin"></i>
-</a>
+      reveals.forEach((el) => {
 
-</div>
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
 
-</div>
+        if (elementTop < windowHeight - 100) {
+          el.classList.add("active");
+        }
 
-</section>
+      });
 
-<footer>
+    });
 
-<p>© 2026 Tejas Luhar</p>
+    /* theme toggle */
+    const toggleBtn = document.querySelector(".toggle");
+    const toggleIcon = document.querySelector(".toggle i");
 
-</footer>
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      if (document.body.classList.contains("light")) {
+        toggleIcon.classList.remove("fa-moon");
+        toggleIcon.classList.add("fa-sun");
+      } else {
+        toggleIcon.classList.remove("fa-sun");
+        toggleIcon.classList.add("fa-moon");
+      }
+    });
 
-<script>
-
-/* typing animation */
-
-const roles=[
-"WordPress Developer",
-"Web Developer",
-"SEO Specialist",
-"Digital Tech Enthusiast"
-];
-
-let i=0;
-let j=0;
-let current="";
-let isDeleting=false;
-
-function type(){
-
-current=roles[i];
-
-if(!isDeleting){ j++; }
-else{ j--; }
-
-document.getElementById("typing").textContent=current.substring(0,j);
-
-if(!isDeleting && j===current.length){
-isDeleting=true;
-setTimeout(type,1200);
-return;
-}
-
-if(isDeleting && j===0){
-isDeleting=false;
-i++;
-if(i===roles.length){ i=0; }
-}
-
-setTimeout(type,80);
-}
-
-type();
-
-/* scroll reveal */
-
-window.addEventListener("scroll",function(){
-
-const reveals=document.querySelectorAll(".reveal");
-
-reveals.forEach((el)=>{
-
-const windowHeight=window.innerHeight;
-const elementTop=el.getBoundingClientRect().top;
-
-if(elementTop<windowHeight-100){
-el.classList.add("active");
-}
-
-});
-
-});
-
-</script>
+  </script>
 
 </body>
+
 </html>
