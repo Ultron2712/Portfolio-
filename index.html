@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tejas Luhar | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0f172a;
+color:white;
+transition:0.3s;
+}
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:#020617;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-weight:600;
+color:#38bdf8;
+font-size:20px;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-size:15px;
+}
+
+nav ul li a:hover{
+color:#38bdf8;
+}
+
+.toggle{
+cursor:pointer;
+font-size:18px;
+}
+
+/* HERO */
+
+.hero{
+display:flex;
+align-items:center;
+justify-content:center;
+flex-wrap:wrap;
+gap:50px;
+padding:120px 10%;
+}
+
+.hero span{
+color:#38bdf8;
+}
+
+.hero p{
+margin-top:15px;
+max-width:500px;
+}
+
+.profile{
+width:260px;
+border-radius:20px;
+border:4px solid #38bdf8;
+}
+
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:12px 28px;
+background:#38bdf8;
+color:black;
+text-decoration:none;
+border-radius:8px;
+font-weight:600;
+}
+
+/* SECTIONS */
+
+section{
+padding:80px 10%;
+text-align:center;
+}
+
+section h2{
+margin-bottom:30px;
+font-size:30px;
+}
+
+/* ABOUT */
+
+#about p{
+max-width:750px;
+margin:auto;
+line-height:1.7;
+color:#cbd5f5;
+}
+
+/* SKILLS */
+
+.skills{
+max-width:700px;
+margin:auto;
+}
+
+.skill{
+margin:18px 0;
+text-align:left;
+}
+
+.bar{
+background:#1e293b;
+height:8px;
+border-radius:10px;
+}
+
+.bar span{
+display:block;
+height:8px;
+background:#38bdf8;
+border-radius:10px;
+}
+
+/* PROJECTS */
+
+.project-grid{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+}
+
+.project{
+background:#1e293b;
+padding:25px;
+width:280px;
+border-radius:12px;
+transition:0.3s;
+}
+
+.project:hover{
+transform:translateY(-8px);
+}
+
+/* HOBBIES */
+
+.hobby-list{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+}
+
+.hobby-list div{
+background:#1e293b;
+padding:10px 18px;
+border-radius:20px;
+}
+
+/* CONTACT */
+
+.contact-links i{
+font-size:28px;
+margin:15px;
+color:#38bdf8;
+transition:0.3s;
+}
+
+.contact-links i:hover{
+transform:scale(1.2);
+}
+
+/* FOOTER */
+
+footer{
+background:#020617;
+padding:20px;
+text-align:center;
+}
+
+/* SCROLL ANIMATION */
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:all 1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+}
+
+.profile{
+width:200px;
+}
+
+nav ul{
+display:none;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">Tejas Luhar</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#hobbies">Hobbies</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<div class="toggle">
+<i class="fas fa-moon"></i>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section id="home" class="hero">
+
+<div>
+
+<h1>Hello, I'm <span>Tejas Luhar</span></h1>
+
+<h3 id="typing"></h3>
+
+<p>
+Information Technology student specializing in WordPress development,
+SEO implementation and scalable digital platforms.
+</p>
+
+<a href="resume.pdf" class="btn">Download Resume</a>
+
+</div>
+
+<img src="profile.jpg" class="profile">
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="reveal">
+
+<h2>About Me</h2>
+
+<p>
+
+IT engineering student with hands-on experience in WordPress
+development, SEO optimization and analytics integration.
+
+Passionate about building scalable web platforms and using
+AI-assisted workflows to improve digital performance.
+
+</p>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills" class="reveal">
+
+<h2>Technical Skills</h2>
+
+<div class="skills">
+
+<div class="skill"><p>HTML</p><div class="bar"><span style="width:90%"></span></div></div>
+<div class="skill"><p>CSS</p><div class="bar"><span style="width:85%"></span></div></div>
+<div class="skill"><p>JavaScript</p><div class="bar"><span style="width:75%"></span></div></div>
+<div class="skill"><p>WordPress</p><div class="bar"><span style="width:92%"></span></div></div>
+<div class="skill"><p>WooCommerce</p><div class="bar"><span style="width:88%"></span></div></div>
+<div class="skill"><p>SEO</p><div class="bar"><span style="width:85%"></span></div></div>
+<div class="skill"><p>Python</p><div class="bar"><span style="width:60%"></span></div></div>
+<div class="skill"><p>Java</p><div class="bar"><span style="width:55%"></span></div></div>
+<div class="skill"><p>C Programming</p><div class="bar"><span style="width:65%"></span></div></div>
+<div class="skill"><p>Figma</p><div class="bar"><span style="width:70%"></span></div></div>
+<div class="skill"><p>Google Analytics</p><div class="bar"><span style="width:75%"></span></div></div>
+<div class="skill"><p>Prompt Engineering</p><div class="bar"><span style="width:80%"></span></div></div>
+<div class="skill"><p>Canva</p><div class="bar"><span style="width:85%"></span></div></div>
+<div class="skill"><p>DaVinci Resolve</p><div class="bar"><span style="width:75%"></span></div></div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects" class="reveal">
+
+<h2>Projects</h2>
+
+<div class="project-grid">
+
+<div class="project">
+
+<h3>Travelora Holidays</h3>
+
+<p>
+Developed responsive travel website with booking workflow,
+technical SEO, SSL security and analytics integration.
+</p>
+
+</div>
+
+<div class="project">
+
+<h3>Sushobhan E-Commerce</h3>
+
+<p>
+Designed WooCommerce e-commerce platform with SEO optimized
+product catalog and secure checkout.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- HOBBIES -->
+
+<section id="hobbies" class="reveal">
+
+<h2>Hobbies</h2>
+
+<div class="hobby-list">
+
+<div>Badminton</div>
+<div>Motorsports</div>
+<div>Photography</div>
+<div>Video Editing</div>
+<div>Creative Media</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="reveal">
+
+<h2>Contact</h2>
+
+<div class="contact-links">
+
+<a href="mailto:luhartejas48@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://github.com/Ultron2712"><i class="fab fa-github"></i></a>
+<a href="https://linkedin.com/in/tejas-luhar"><i class="fab fa-linkedin"></i></a>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 Tejas Luhar</p>
+
+</footer>
+
+<script>
+
+/* typing animation */
+
+const roles=[
+"WordPress Developer",
+"Web Developer",
+"SEO Specialist",
+"Digital Tech Enthusiast"
+];
+
+let i=0;
+let j=0;
+let current="";
+let isDeleting=false;
+
+function type(){
+
+current=roles[i];
+
+if(!isDeleting){ j++; }
+else{ j--; }
+
+document.getElementById("typing").textContent=current.substring(0,j);
+
+if(!isDeleting && j===current.length){
+isDeleting=true;
+setTimeout(type,1200);
+return;
+}
+
+if(isDeleting && j===0){
+isDeleting=false;
+i++;
+if(i===roles.length){ i=0; }
+}
+
+setTimeout(type,80);
+}
+
+type();
+
+/* scroll reveal */
+
+window.addEventListener("scroll",function(){
+
+const reveals=document.querySelectorAll(".reveal");
+
+reveals.forEach((el)=>{
+
+const windowHeight=window.innerHeight;
+const elementTop=el.getBoundingClientRect().top;
+
+if(elementTop<windowHeight-100){
+el.classList.add("active");
+}
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
