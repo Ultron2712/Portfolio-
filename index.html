@@ -75,6 +75,83 @@
     }
 
     /* ═══════════════════════════════════════
+   BACKGROUND GRAPHICS & TEXTURE
+   ═══════════════════════════════════════ */
+    .bg-graphics {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: float 20s infinite alternate ease-in-out;
+    }
+
+    .blob-1 {
+      width: 500px;
+      height: 500px;
+      background: var(--accent);
+      top: -10%;
+      left: -10%;
+      animation-duration: 25s;
+    }
+
+    .blob-2 {
+      width: 400px;
+      height: 400px;
+      background: #f59e0b;
+      bottom: 10%;
+      right: -5%;
+      animation-duration: 30s;
+      animation-delay: -5s;
+    }
+
+    .blob-3 {
+      width: 300px;
+      height: 300px;
+      background: #ea580c;
+      top: 40%;
+      left: 30%;
+      animation-duration: 20s;
+      animation-delay: -10s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(5%, 10%) scale(1.1);
+      }
+
+      100% {
+        transform: translate(-5%, -5%) scale(0.9);
+      }
+    }
+
+    /* Noise texture */
+    .texture-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+      /* Subtle grain */
+    }
+
+    body.dark .texture-overlay {
+      opacity: 0.05;
+    }
+
+    /* ═══════════════════════════════════════
    RESET
    ═══════════════════════════════════════ */
     *,
@@ -436,13 +513,31 @@
    ═══════════════════════════════════════ */
     .glass {
       background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
       border: 1px solid var(--card-border);
       border-radius: var(--card-radius);
       padding: 40px;
-      box-shadow: var(--card-shadow);
+      box-shadow:
+        var(--card-shadow),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3);
       transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease);
+      position: relative;
+    }
+
+    body.dark .glass {
+      box-shadow:
+        var(--card-shadow),
+        inset 0 1px 0.5px rgba(255, 255, 255, 0.1);
+    }
+
+    .glass::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 40%);
+      pointer-events: none;
     }
 
     /* ═══════════════════════════════════════
@@ -720,6 +815,14 @@
 </head>
 
 <body>
+
+  <!-- Texture & Graphics -->
+  <div class="texture-overlay"></div>
+  <div class="bg-graphics">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
 
   <!-- NAV -->
   <nav>
