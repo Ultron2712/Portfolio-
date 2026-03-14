@@ -1,0 +1,9 @@
+<div class="glass glass-deep about-card">
+  <div class="ornament">✦ ✦ ✦</div>
+  <p class="section-sub">About Me</p>
+  <h2>A Quick Snapshot</h2><br>
+  <p>{{ profile.about }}</p><br>
+  <div class="hobby-list">
+    <div class="hobby-pill" ng-repeat="h in hobbies">{{ h.emoji }} {{ h.name }}</div>
+  </div>
+</div>
