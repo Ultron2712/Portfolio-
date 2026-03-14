@@ -154,7 +154,24 @@
     .view-container {
       flex: 1; overflow: hidden; position: relative;
     }
+.ng-view-wrap {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: 32px 8%;
+  overflow-y: auto;
+}
 
+/* Route transition animation */
+.ng-view-wrap.ng-enter {
+  animation: fadeUp 0.4s var(--ease) both;
+}
+.ng-view-wrap.ng-leave {
+  animation: fadeOut 0.25s var(--ease) both;
+}
+@keyframes fadeOut {
+  from { opacity:1; transform:translateY(0); }
+  to   { opacity:0; transform:translateY(-10px); }
+}
     /* Each tab panel fills container, hidden by default */
     .tab-panel {
       position: absolute; inset: 0;
@@ -376,7 +393,6 @@
 
 <body ng-controller="PortfolioCtrl" ng-class="{'dark': isDark}">
 
-  <!-- Background layers -->
   <div class="bg-base"></div>
   <div class="bg-blobs">
     <div class="blob blob-1"></div><div class="blob blob-2"></div>
@@ -386,22 +402,29 @@
 
   <div class="app-shell">
 
-    <!-- ══ NAV ══ -->
+    <!-- NAV -->
     <nav>
-      <div class="logo" ng-click="setTab('home')">{{ profile.name }}</div>
-
+      <div class="logo" ng-click="goTo('/home')">{{ profile.name }}</div>
       <ul class="tab-bar">
         <li ng-repeat="tab in tabs">
-          <button ng-click="setTab(tab.id)" ng-class="{active: activeTab === tab.id}">
+          <button ng-click="goTo(tab.route)" ng-class="{active: isActive(tab.route)}">
             <i ng-class="tab.icon" style="margin-right:5px"></i>{{ tab.label }}
           </button>
         </li>
       </ul>
-
       <div class="toggle" ng-click="isDark = !isDark">
         <i ng-class="isDark ? 'fas fa-sun' : 'fas fa-moon'"></i>
       </div>
     </nav>
+
+    <!-- ROUTER OUTLET -->
+    <div class="view-container">
+      <div ng-view class="ng-view-wrap"></div>
+    </div>
+
+    <div class="app-footer">&copy; {{ currentYear }} {{ profile.name }}</div>
+  </div>
+</body>
 
     <!-- ══ VIEW CONTAINER ══ -->
     <div class="view-container">
