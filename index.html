@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular-route.min.js"></script>
 
   <style>
     :root {
@@ -504,91 +505,116 @@
   </div><!-- /app-shell -->
 
   <script>
-    angular.module('portfolioApp', [])
-      .controller('PortfolioCtrl', ['$scope', '$timeout', function($scope, $timeout) {
+   angular.module('portfolioApp', ['ngRoute'])
 
-        $scope.currentYear  = new Date().getFullYear();
-        $scope.isDark       = false;
-        $scope.activeTab    = 'home';
-        $scope.typingText   = '';
+  // ── ROUTE CONFIG ──
+  .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+    $routeProvider
+      .when('/home',     { template: '<div ng-include="\'views/home.html\'"></div>' })
+      .when('/about',    { template: '<div ng-include="\'views/about.html\'"></div>' })
+      .when('/skills',   { template: '<div ng-include="\'views/skills.html\'"></div>' })
+      .when('/projects', { template: '<div ng-include="\'views/projects.html\'"></div>' })
+      .when('/contact',  { template: '<div ng-include="\'views/contact.html\'"></div>' })
+      .otherwise({ redirectTo: '/home' });
+  }])
 
-        $scope.profile = {
-          name:      'Tejas Luhar',
-          bio:       'Information Technology student specializing in WordPress development, SEO implementation and scalable digital platforms.',
-          about:     'IT engineering student with hands-on experience in WordPress development, SEO optimization and analytics integration. Passionate about crafting beautiful digital experiences that drive real results.',
-          resumeUrl: 'Tejas_Luhar_Resume.pdf'
-        };
+  // ── MAIN CONTROLLER ──
+  .controller('PortfolioCtrl', ['$scope', '$timeout', '$location',
+    function($scope, $timeout, $location) {
 
-        $scope.tabs = [
-          { id:'home',     label:'Home',     icon:'fas fa-house'       },
-          { id:'about',    label:'About',    icon:'fas fa-user'        },
-          { id:'skills',   label:'Skills',   icon:'fas fa-code'        },
-          { id:'projects', label:'Projects', icon:'fas fa-briefcase'   },
-          { id:'contact',  label:'Contact',  icon:'fas fa-envelope'    }
-        ];
+      $scope.currentYear = new Date().getFullYear();
+      $scope.isDark      = false;
+      $scope.typingText  = '';
 
-        $scope.skills = [
-          { name:'HTML',               level:90 },
-          { name:'CSS',                level:85 },
-          { name:'JavaScript',         level:75 },
-          { name:'WordPress',          level:92 },
-          { name:'WooCommerce',        level:88 },
-          { name:'SEO',                level:85 },
-          { name:'Python',             level:60 },
-          { name:'Java',               level:55 },
-          { name:'C Programming',      level:65 },
-          { name:'Figma',              level:70 },
-          { name:'Google Analytics',   level:75 },
-          { name:'Prompt Engineering', level:80 },
-          { name:'Canva',              level:85 },
-          { name:'DaVinci Resolve',    level:75 }
-        ];
+      $scope.profile = {
+        name:      'Tejas Luhar',
+        bio:       'Information Technology student specializing in WordPress development, SEO implementation and scalable digital platforms.',
+        about:     'IT engineering student with hands-on experience in WordPress development, SEO optimization and analytics integration. Passionate about crafting beautiful digital experiences that drive real results.',
+        resumeUrl: 'Tejas_Luhar_Resume.pdf'
+      };
 
-        $scope.projects = [
-          {
-            title:'Travelora Holidays',
-            description:'Developed responsive travel website with booking workflow, technical SEO, SSL security and analytics integration.',
-            tags:['WordPress','SEO','Analytics']
-          },
-          {
-            title:'Sushobhan E-Commerce',
-            description:'Designed WooCommerce e-commerce platform with SEO optimized product catalog and secure checkout.',
-            tags:['WooCommerce','SEO','E-Commerce']
-          }
-        ];
+      $scope.tabs = [
+        { id:'home',     label:'Home',     icon:'fas fa-house',     route:'/home'     },
+        { id:'about',    label:'About',    icon:'fas fa-user',      route:'/about'    },
+        { id:'skills',   label:'Skills',   icon:'fas fa-code',      route:'/skills'   },
+        { id:'projects', label:'Projects', icon:'fas fa-briefcase', route:'/projects' },
+        { id:'contact',  label:'Contact',  icon:'fas fa-envelope',  route:'/contact'  }
+      ];
 
-        $scope.hobbies = [
-          { emoji:'🏸', name:'Badminton'     },
-          { emoji:'🏎️', name:'Motorsports'   },
-          { emoji:'📸', name:'Photography'   },
-          { emoji:'🎬', name:'Video Editing'  },
-          { emoji:'🎨', name:'Creative Media' }
-        ];
+      $scope.skills = [
+        { name:'HTML',               level:90 },
+        { name:'CSS',                level:85 },
+        { name:'JavaScript',         level:75 },
+        { name:'WordPress',          level:92 },
+        { name:'WooCommerce',        level:88 },
+        { name:'SEO',                level:85 },
+        { name:'Python',             level:60 },
+        { name:'Java',               level:55 },
+        { name:'C Programming',      level:65 },
+        { name:'Figma',              level:70 },
+        { name:'Google Analytics',   level:75 },
+        { name:'Prompt Engineering', level:80 },
+        { name:'Canva',              level:85 },
+        { name:'DaVinci Resolve',    level:75 }
+      ];
 
-        $scope.contactLinks = [
-          { url:'mailto:luhartejas48@gmail.com',        icon:'fas fa-envelope', label:'Email',    external:false },
-          { url:'https://github.com/Ultron2712',        icon:'fab fa-github',   label:'GitHub',   external:true  },
-          { url:'https://linkedin.com/in/tejas-luhar', icon:'fab fa-linkedin', label:'LinkedIn', external:true  }
-        ];
-
-        // Tab switching
-        $scope.setTab = function(id) { $scope.activeTab = id; };
-
-        // Typing effect
-        var roles = ['WordPress Developer','Web Developer','SEO Specialist','Digital Tech Enthusiast'];
-        var ri = 0, ci = 0, del = false;
-        function typeLoop() {
-          var cur = roles[ri];
-          ci = del ? ci - 1 : ci + 1;
-          $scope.typingText = cur.substring(0, ci);
-          var delay = del ? 40 : 80;
-          if (!del && ci === cur.length) { del = true; delay = 1800; }
-          if (del  && ci === 0)         { del = false; ri = (ri + 1) % roles.length; }
-          $timeout(typeLoop, delay);
+      $scope.projects = [
+        {
+          title:'Travelora Holidays',
+          description:'Developed responsive travel website with booking workflow, technical SEO, SSL security and analytics integration.',
+          tags:['WordPress','SEO','Analytics']
+        },
+        {
+          title:'Sushobhan E-Commerce',
+          description:'Designed WooCommerce e-commerce platform with SEO optimized product catalog and secure checkout.',
+          tags:['WooCommerce','SEO','E-Commerce']
         }
-        $timeout(typeLoop, 600);
+      ];
 
-      }]);
+      $scope.hobbies = [
+        { emoji:'🏸', name:'Badminton'     },
+        { emoji:'🏎️', name:'Motorsports'   },
+        { emoji:'📸', name:'Photography'   },
+        { emoji:'🎬', name:'Video Editing'  },
+        { emoji:'🎨', name:'Creative Media' }
+      ];
+
+      $scope.contactLinks = [
+        { url:'mailto:luhartejas48@gmail.com',        icon:'fas fa-envelope', label:'Email',    external:false },
+        { url:'https://github.com/Ultron2712',        icon:'fab fa-github',   label:'GitHub',   external:true  },
+        { url:'https://linkedin.com/in/tejas-luhar', icon:'fab fa-linkedin', label:'LinkedIn', external:true  }
+      ];
+
+      // ── Active tab from route ──
+      $scope.isActive = function(route) {
+        return $location.path() === route;
+      };
+
+      $scope.goTo = function(route) {
+        $location.path(route);
+      };
+
+      // ── Typing effect ──
+      var roles = ['WordPress Developer','Web Developer','SEO Specialist','Digital Tech Enthusiast'];
+      var ri = 0, ci = 0, del = false;
+      function typeLoop() {
+        var cur = roles[ri];
+        ci = del ? ci - 1 : ci + 1;
+        $scope.typingText = cur.substring(0, ci);
+        var delay = del ? 40 : 80;
+        if (!del && ci === cur.length) { del = true; delay = 1800; }
+        if (del  && ci === 0)         { del = false; ri = (ri + 1) % roles.length; }
+        $timeout(typeLoop, delay);
+      }
+      $timeout(typeLoop, 600);
+    }
+  ])
+
+  // ── SKILLS CONTROLLER (animates bars on route load) ──
+  .controller('SkillsCtrl', ['$scope', '$timeout', function($scope, $timeout) {
+    $scope.skillsVisible = false;
+    $timeout(function() { $scope.skillsVisible = true; }, 100);
+  }]);
   </script>
 </body>
 </html>
